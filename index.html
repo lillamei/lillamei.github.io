@@ -134,7 +134,10 @@
       /* Responsive text sizes */
       @media (max-width: 640px) {
         .responsive-text-sm {
-          font-size: 1.5vw; /* Reduced from 3.5vw */
+          font-size: 1rem; /* Reduced from 3.5vw */
+        }
+        .responsive-text {
+          font-size: 1.5rem; /* Front card text size for mobile */
         }
       }
 
@@ -143,12 +146,18 @@
         .responsive-text-sm {
           font-size: 1.9vw; /* Reduced from 2.3vw */
         }
+        .responsive-text {
+          font-size: 2.8vw; /* Front card text size for tablet */
+        }
       }
 
       /* For large screens (desktop) */
       @media (min-width: 1025px) {
         .responsive-text-sm {
-          font-size: 1.4vw; /* Reduced from 1.7vw */
+          font-size: 1.6vw; /* Increased from 1.4vw */
+        }
+        .responsive-text {
+          font-size: 2.2vw; /* Front card text size for desktop */
         }
       }
     </style>
@@ -166,14 +175,18 @@
             />
           </div>
           <div
-            class="pb-8 px-8 text-center text-rose-gold flex-grow flex items-center justify-center"
+            class="pb-20 px-8 text-center text-rose-gold flex-grow flex items-center justify-center"
           >
             <div>
-              <p class="responsive-text font-elegant tracking-wide">
+              <p
+                class="responsive-text font-modern font-light tracking-wide text-lg md:text-xl lg:text-2xl"
+              >
                 Let Lilla Mei whisper rather than shout.
               </p>
-              <p class="responsive-text font-elegant tracking-wide mt-2">
-                Thats her stregth.
+              <p
+                class="responsive-text font-modern font-light tracking-wide mt-2 text-lg md:text-xl lg:text-2xl"
+              >
+                That&apos;s her stregth.
               </p>
             </div>
           </div>
@@ -204,7 +217,7 @@
             class="border-t-2 border-b-2 border-rose-gold h-full flex flex-col justify-center p-8 relative"
           >
             <div
-              class="absolute top-6 right-6 md:top-8 md:right-8 border border-rose-gold w-16 h-16 md:w-20 md:h-20 flex items-center justify-center"
+              class="absolute top-6 right-6 md:top-8 md:right-8 border border-rose-gold w-16 h-16 md:w-20 md:h-20 flex items-center justify-center hidden md:flex"
             >
               <img
                 src="logo.png"
@@ -213,9 +226,11 @@
               />
             </div>
 
-            <div class="text-left text-rose-gold w-full pr-0 md:pr-24">
+            <div
+              class="text-left text-rose-gold w-full pr-0 md:pr-24 max-h-full overflow-y-auto my-auto pb-11"
+            >
               <p
-                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed"
+                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed lg:text-lg"
               >
                 Lilla Mei is more than just jewelry; it's a reflection of my
                 passion for design, aesthetics, and creating with intention.
@@ -226,7 +241,7 @@
               </p>
 
               <p
-                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed"
+                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed lg:text-lg"
               >
                 I specialize in minimalist modern jewelry with a distinct
                 personal touch, crafting delicate yet present pieces from gold,
@@ -237,7 +252,7 @@
               </p>
 
               <p
-                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed"
+                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed lg:text-lg"
               >
                 At Lilla Mei, I value creating from the heart with meticulous
                 attention to detail. I believe in the principles of slow
@@ -247,55 +262,40 @@
               </p>
 
               <p
-                class="responsive-text-sm font-modern font-light leading-relaxed"
+                class="responsive-text-sm font-modern font-light leading-relaxed pb-4 lg:text-lg"
               >
                 My aim is to create jewelry that not only enhances your style
                 but also carries a deeper meaning, becoming a cherished part of
                 your story.
               </p>
             </div>
-
-            <!-- Back flip hint -->
-            <div
-              class="absolute top-6 left-6 hover-wiggle text-rose-gold opacity-70 hover:opacity-100"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                />
-              </svg>
-            </div>
           </div>
         </div>
       </div>
-      <!-- Click hint -->
+      <!-- Click hint container -->
       <div
-        class="click-hint absolute bottom-4 right-4 bg-white bg-opacity-90 text-rose-gold rounded-full px-4 py-2 shadow-md flex items-center gap-2 z-10"
+        class="absolute bottom-4 md:bottom-8 left-0 right-0 flex justify-center md:justify-end md:pr-8 z-10"
       >
-        <span class="text-sm font-modern">Click to flip</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <!-- Click hint button -->
+        <div
+          class="click-hint bg-white bg-opacity-90 text-rose-gold rounded-full px-6 py-3 shadow-md flex items-center gap-3"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-          />
-        </svg>
+          <span class="text-base font-modern">Click to flip</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+            />
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -307,7 +307,7 @@
           this.classList.toggle("flipped");
 
           // Handle click hint - instant disappearance
-          const clickHint = document.querySelector(".click-hint");
+          const clickHint = document.querySelector(".click-hint").parentElement;
           if (clickHint) {
             // Immediately hide without transition
             clickHint.style.transition = "none";
