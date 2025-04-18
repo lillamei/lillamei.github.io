@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lilla Mei Jewelry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Raleway:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Make the page take full height and width */
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      /* Custom font styles */
+      .font-elegant {
+        font-family: "Cormorant Garamond", serif;
+      }
+      .font-modern {
+        font-family: "Raleway", sans-serif;
+      }
+
+      /* Card flip mechanics */
+      .flip-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          box-shadow 0.3s ease;
+        transform-style: preserve-3d;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      .flip-card:hover .flip-card-inner {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .flip-card-back {
+        transform: rotateY(180deg);
+      }
+
+      /* Animations */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+      }
+      .click-hint {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes wiggle {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-3px) rotate(-1deg);
+        }
+        75% {
+          transform: translateX(3px) rotate(1deg);
+        }
+      }
+
+      .hover-wiggle:hover {
+        animation: wiggle 0.5s ease-in-out;
+      }
+
+      /* Custom colors */
+      .text-rose-gold {
+        color: #d4a092;
+      }
+      .border-rose-gold {
+        border-color: #d4a092;
+      }
+      .bg-rose-gold {
+        background-color: #d4a092;
+      }
+
+      /* Front image styling */
+      .front-image {
+        height: 65%;
+        overflow: hidden;
+        padding: 2rem;
+      }
+
+      .front-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Responsive text sizes */
+      @media (max-width: 640px) {
+        .responsive-text-sm {
+          font-size: 1.5vw; /* Reduced from 3.5vw */
+        }
+      }
+
+      /* For medium screens (tablet) */
+      @media (min-width: 641px) and (max-width: 1024px) {
+        .responsive-text-sm {
+          font-size: 1.9vw; /* Reduced from 2.3vw */
+        }
+      }
+
+      /* For large screens (desktop) */
+      @media (min-width: 1025px) {
+        .responsive-text-sm {
+          font-size: 1.4vw; /* Reduced from 1.7vw */
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <div class="flip-card cursor-pointer" id="flipCard">
+      <div class="flip-card-inner">
+        <!-- Front of card -->
+        <div class="flip-card-front bg-white flex flex-col">
+          <div class="front-image w-full overflow-hidden">
+            <img
+              src="jewelry-collage.jpg"
+              alt="Lilla Mei Jewelry Collage"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div
+            class="py-6 px-8 text-center text-rose-gold flex-grow flex items-center justify-center"
+          >
+            <div>
+              <p class="responsive-text font-elegant tracking-wide">
+                Let Lilla Mei whisper rather than shout.
+              </p>
+              <p class="responsive-text font-elegant tracking-wide mt-2">
+                Thats her stregth.
+              </p>
+            </div>
+          </div>
+          <!-- Front flip hint -->
+          <div
+            class="absolute top-4 right-4 hover-wiggle text-rose-gold opacity-70 hover:opacity-100"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Back of card -->
+        <div class="flip-card-back bg-white">
+          <div
+            class="border-t-2 border-b-2 border-rose-gold h-full flex flex-col justify-center p-8 relative"
+          >
+            <div
+              class="absolute top-6 right-6 md:top-8 md:right-8 border border-rose-gold w-16 h-16 md:w-20 md:h-20 flex items-center justify-center"
+            >
+              <img
+                src="logo.png"
+                alt="Lilla Mei Logo"
+                class="max-w-full max-h-full"
+              />
+            </div>
+
+            <div class="text-left text-rose-gold w-full pr-0 md:pr-24">
+              <p
+                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed"
+              >
+                Lilla Mei is more than just jewelry; it's a reflection of my
+                passion for design, aesthetics, and creating with intention.
+                Founded by me, Meital, in vibrant Tel Aviv, the name Lilla Mei
+                combines my own name with the inspiring character Little My from
+                the children's show The Moomins, embodying a spirit of
+                understated strength and unique charm.
+              </p>
+
+              <p
+                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed"
+              >
+                I specialize in minimalist modern jewelry with a distinct
+                personal touch, crafting delicate yet present pieces from gold,
+                silver, and carefully selected colorful gemstones. My designs
+                are driven by a desire to translate internal visions into
+                tangible form, sometimes sparked by an emotion, other times by
+                the beauty found in everyday shapes and colors.
+              </p>
+
+              <p
+                class="mb-5 responsive-text-sm font-modern font-light leading-relaxed"
+              >
+                At Lilla Mei, I value creating from the heart with meticulous
+                attention to detail. I believe in the principles of slow
+                fashion, choosing thoughtful craftsmanship over mass production,
+                and always considering the impact I have on both people and my
+                surroundings.
+              </p>
+
+              <p
+                class="responsive-text-sm font-modern font-light leading-relaxed"
+              >
+                My aim is to create jewelry that not only enhances your style
+                but also carries a deeper meaning, becoming a cherished part of
+                your story.
+              </p>
+            </div>
+
+            <!-- Back flip hint -->
+            <div
+              class="absolute top-6 left-6 hover-wiggle text-rose-gold opacity-70 hover:opacity-100"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Click hint -->
+      <div
+        class="click-hint absolute bottom-4 right-4 bg-white bg-opacity-90 text-rose-gold rounded-full px-4 py-2 shadow-md flex items-center gap-2 z-10"
+      >
+        <span class="text-sm font-modern">Click to flip</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      // Add click handler
+      document
+        .getElementById("flipCard")
+        .addEventListener("click", function () {
+          this.classList.toggle("flipped");
+
+          // Handle click hint - instant disappearance
+          const clickHint = document.querySelector(".click-hint");
+          if (clickHint) {
+            // Immediately hide without transition
+            clickHint.style.transition = "none";
+            clickHint.style.opacity = "0";
+            clickHint.style.display = "none";
+
+            // Show and fade back in after flip animation completes
+            setTimeout(() => {
+              clickHint.style.display = "flex";
+              // Force browser to process the display change before setting transition
+              void clickHint.offsetWidth;
+              clickHint.style.transition = "opacity 0.3s ease";
+              clickHint.style.opacity = "1";
+            }, 800); // Match the flip animation duration
+          }
+        });
+
+      // Listen for iframe resize events
+      window.addEventListener("resize", function () {
+        // Card already takes 100% width and height
+        // No additional adjustment needed as we're using fully responsive design
+      });
+
+      // Communication with parent iframe if needed
+      window.addEventListener("message", function (event) {
+        // Handle any messages from parent iframe if needed
+      });
+    </script>
+  </body>
+</html>
